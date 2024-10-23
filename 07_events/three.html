@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asyn JS</title>
+</head>
+<body>
+    <h1>Asyn JS Part 2</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // const sayDate = function(){
+    //     console.log("Samiksha",Date.now())
+    // }
+    // setInterval(sayDate,2000)
+    //const IntervalId = setInterval(sayDate,2000,"hi") 
+    // clearInterval(IntervalId)
+    
+    let intervalId = null; // Declare intervalId globally to store the interval reference
+
+    const sayDate = function(str){
+        console.log(str, Date.now());
+    }
+
+    // Start the interval when the 'start' button is clicked
+    document.querySelector('#start').addEventListener('click', function(){
+        if (!intervalId) { // Start a new interval only if it's not already running
+            intervalId = setInterval(sayDate, 2000, "hi");
+        }
+    });
+
+    // Stop the interval when the 'stop' button is clicked
+    document.querySelector('#stop').addEventListener('click', function(){
+        if (intervalId) { // Clear the interval only if it exists
+            clearInterval(intervalId);
+            intervalId = null; // Reset the intervalId to null after clearing
+        }
+    });
+
+</script>
+</html>
